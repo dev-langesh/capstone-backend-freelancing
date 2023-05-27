@@ -1,6 +1,7 @@
 const Product = require("../models/Product");
 const bcrypt = require("bcrypt");
 const auth = require("../auth");
+const User = require("../models/User");
 
 // Create a new product
 module.exports.addProduct = (data) => {
@@ -153,3 +154,17 @@ module.exports.getBrand = (reqBody) => {
     return result;
   });
 };
+
+async function deleteProduct(req, res) {
+  const { id } = req.params;
+
+  console.log(id);
+
+  const result = await Product.findByIdAndDelete(id);
+
+  console.log(result);
+
+  res.json({ message: "deleted" });
+}
+
+module.exports.deleteProduct = deleteProduct;

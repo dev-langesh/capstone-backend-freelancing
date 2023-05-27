@@ -20,7 +20,6 @@ router.get("/all", auth.verify, async (req, res) => {
   let isAdmin = auth.decode(req.headers.authorization).isAdmin;
   const result = await productController.getAllProducts(isAdmin);
 
-  console.log(result);
   res.json(result);
 });
 
@@ -76,5 +75,7 @@ router.post("/brand", (req, res) => {
     .getBrand(req.body)
     .then((resultFromController) => res.send(resultFromController));
 });
+
+router.post("/delete/:id", productController.deleteProduct);
 
 module.exports = router;

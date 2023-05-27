@@ -5,6 +5,7 @@ const userRoutes = require("./routes/user.js");
 const productRoutes = require("./routes/product.js");
 const orderRoutes = require("./routes/order.js");
 const { loadAdminDetails } = require("./lib/loadAdmin.js");
+const { cartRouter } = require("./routes/cart.js");
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
 app.use("/orders", orderRoutes);
+app.use("/cart", cartRouter);
 
 // port listening
 if (require.main === module) {
