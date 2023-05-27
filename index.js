@@ -11,10 +11,13 @@ const app = express();
 
 // mongo db connection using srv link
 // mongodb+srv://admin:admin123@zuitt-bootcamp.sk2eror.mongodb.net/Capstone2_API?retryWrites=true&w=majority
-mongoose.connect("mongodb://localhost:27017", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://admin:admin123@zuitt-bootcamp.sk2eror.mongodb.net/Capstone2_API?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 mongoose.connection.once("open", () =>
   console.log("Now connected to MongoDB Atlas.")
